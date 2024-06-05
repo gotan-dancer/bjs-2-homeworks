@@ -18,4 +18,11 @@ function solveEquation(a, b, c) {
 
 function calculateTotalMortgage(percent, contribution, amount, countMonths) {
   
+  let percentNorm = (percent / (100 * 12)).toFixed(2);
+
+  let retFull = amount - contribution;
+
+  let retMonth = retFull * (percentNorm + (percentNorm / (((1 + percentNorm)**countMonths) - 1)));
+
+  return (retMonth * countMonths).toFixed(2);
 }
