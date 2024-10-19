@@ -27,10 +27,20 @@ class Triangle {
     }
 
     get perimeter(){
-        return this.a + this.b + this.c;
+        this.trianglePerim = this.a + this.b + this.c;
+        return this.trianglePerim;
     }
 
     get area(){
-        return Number(Math.sqrt((this.a + this.b + this.c) / 2 * ((this.a + this.b + this.c) / 2 - this.a) * ((this.a + this.b + this.c) / 2 - this.b) * ((this.a + this.b + this.c) / 2 - this.c))).toFixed(3);
+        let poluPerim = this.trianglePerim / 2;
+        return Number(Math.sqrt(poluPerim * (poluPerim - this.a) * (poluPerim - this.b) * (poluPerim - this.c)).toFixed(3));
+    }
+}
+
+function getTriangle(a,b,c){
+    try{
+        return new Triangle(a,b,c);
+    } catch(error){
+        throw new Error ("Ошибка! Треугольник не существует");
     }
 }
