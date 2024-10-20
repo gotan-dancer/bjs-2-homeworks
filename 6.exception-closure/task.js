@@ -27,13 +27,11 @@ class Triangle {
     }
 
     get perimeter(){
-        this.trianglePerim = this.a + this.b + this.c;
-        return this.trianglePerim;
+        return this.a + this.b + this.c;
     }
 
     get area(){
-        let poluPerim = this.trianglePerim / 2;
-        return Number(Math.sqrt(poluPerim * (poluPerim - this.a) * (poluPerim - this.b) * (poluPerim - this.c)).toFixed(3));
+        return Number(Math.sqrt(this.perimeter / 2 * (this.perimeter / 2 - this.a) * (this.perimeter / 2 - this.b) * (this.perimeter / 2 - this.c)).toFixed(3));
     }
 }
 
