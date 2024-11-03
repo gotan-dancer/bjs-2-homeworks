@@ -10,20 +10,18 @@ class AlarmClock {
         }
 
         for(let i = 0; i < this.alarmCollection.length; i++){
-            if(this.alarmCollection[i].time === time){
+            if(this.alarmCollection.some((item) => item.time === time)){
                 console.warn('Уже присутствует звонок на это же время');
             }
         }
 
         let canCall = true;
 
-        let obj = {callBack: callBack, time: time, canCall};
-
-        this.alarmCollection.push(obj);
+        this.alarmCollection.push({callBack, time, canCall});
     }
 
     removeClock(time){
-        filter(item => item.time !== time);
+        this.alarmCollection.filter((item) => item.time !== time);
     }
 
     getCurrentFormattedTime(){
