@@ -9,10 +9,8 @@ class AlarmClock {
             throw new Error('Отсутствуют обязательные аргументы');
         }
 
-        for(let i = 0; i < this.alarmCollection.length; i++){
-            if(this.alarmCollection.some((item) => item.time === time)){
-                console.warn('Уже присутствует звонок на это же время');
-            }
+        if(this.alarmCollection.some((item) => item.time === time)){
+            console.warn('Уже присутствует звонок на это же время');
         }
 
         let canCall = true;
@@ -21,7 +19,7 @@ class AlarmClock {
     }
 
     removeClock(time){
-        this.alarmCollection.filter((item) => item.time !== time);
+        return this.alarmCollection.filter((item) => item.time !== time);
     }
 
     getCurrentFormattedTime(){
