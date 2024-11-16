@@ -29,4 +29,29 @@ class AlarmClock {
         });    
     }
 
+    start(){
+        if(this.intervalId) return;
+
+        this.intervalId = setInterval(() => { 
+            if(this.alarmCollection.forEach(call => call.time === getCurrentFormattedTime() && call.canCall)){
+                this.alarmCollection.canCall = false;
+                this.alarmCollection.callBack;
+            }
+        }, 1000);
+    }
+
+    stop(){
+        clearInterval(this.intervalId);
+        this.intervalId = null;
+    }
+
+    resetAllCalls(){
+        this.alarmCollection.forEach(call => call.canCall = true);
+    }
+
+    clearAlarms(){
+        this.stop();
+        this.alarmCollection = [];
+    }
+
 }
