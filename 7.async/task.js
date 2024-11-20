@@ -13,13 +13,11 @@ class AlarmClock {
             console.warn('Уже присутствует звонок на это же время');
         }
 
-        let canCall = true;
-
-        this.alarmCollection.push({callBack, time, canCall});
+        this.alarmCollection.push({callBack, time, canCall:true});
     }
 
     removeClock(time){
-        return this.alarmCollection.filter((item) => item.time !== time);
+        return this.alarmCollection = this.alarmCollection.filter((item) => item.time !== time);
     }
 
     getCurrentFormattedTime(){
@@ -33,10 +31,11 @@ class AlarmClock {
         if(this.intervalId) return;
 
         this.intervalId = setInterval(() => { 
-            if(this.alarmCollection.forEach(call => call.time === getCurrentFormattedTime() && call.canCall)){
-                this.alarmCollection.canCall = false;
-                this.alarmCollection.callBack;
-            }
+            this.alarmCollection.forEach((call) => { 
+                call.time === this.getCurrentFormattedTime() && call.canCall;
+                call.canCall = false;
+                call.callBack();
+            });
         }, 1000);
     }
 
